@@ -1,9 +1,11 @@
 ﻿using EFCoreTestsConsoleApp1;
 using Microsoft.EntityFrameworkCore;
 
+// update-database -context SchoolContextNT
+
 var id = new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d");
 
-// Add single nested tracking // WORKING
+// Add one-to-one tracking // WORKING
 //using (var context = new SchoolContext())
 //{
 
@@ -20,7 +22,7 @@ var id = new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d");
 //    context.SaveChanges();
 //}
 
-// Add single nested no tracking. // WORKING
+// Add one-to-one NO TRACKING // WORKING
 //using (var context = new SchoolContextNT())
 //{
 //    var std = new Person()
@@ -36,7 +38,22 @@ var id = new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d");
 //    context.SaveChanges();
 //}
 
-// Update single nested // WORKING
+// Add many-to-one NO TRACKING // WORKING!!!
+//using (var context = new SchoolContextNT())
+//{
+//	var account = new Account
+//	{
+//		Name = "This is test account!"
+//	};
+
+//	var person = new Person();
+//	person.Accounts.Add(account);
+
+//	context.Persons.Add(person);
+//	context.SaveChanges();
+//}
+
+// Update one-to-one // WORKING
 //using (var context = new SchoolContext())
 //{
 //    var p = context.Persons.Include(x => x.Info).FirstOrDefault(x => x.Id == new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d"));
@@ -46,7 +63,7 @@ var id = new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d");
 //    context.SaveChanges();
 //}
 
-// Update single nested no tracking // NOT WORKING
+// Update one-to-one NO TRACKING // NOT WORKING
 //using (var context = new SchoolContextNT())
 //{
 //    var p = context.Persons.Include(x => x.Info).FirstOrDefault(x => x.Id == new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d"));
@@ -56,7 +73,7 @@ var id = new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d");
 //    context.SaveChanges();
 //}
 
-// Update list nested // WORKING
+// Update many-to-one // WORKING
 //using (var context = new SchoolContext())
 //{
 //    var p = context.Persons.FirstOrDefault(x => x.Id == new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d"));
@@ -68,7 +85,7 @@ var id = new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d");
 //    context.SaveChanges();
 //}
 
-// Update list nested no tracking // NOT WORKING
+// Update many-to-one NO TRACKING // NOT WORKING
 //using (var context = new SchoolContextNT())
 //{
 //    var p = context.Persons.FirstOrDefault(x => x.Id == new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d"));
@@ -81,9 +98,9 @@ var id = new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d");
 //    context.SaveChanges();
 //}
 
-// WORKING
+// WORKING!!!
 
-//         Update single nested no tracking
+// Update one-to-one NO TRACKING
 //using (var context = new SchoolContextNT())
 //{
 //    var p = context.Persons.Include(x => x.Info).FirstOrDefault(x => x.Id == new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d"));
@@ -93,6 +110,7 @@ var id = new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d");
 //    context.SaveChanges();
 //}
 
+// Add many-to-one NO TRACKING
 //using (var context = new SchoolContextNT())
 //{
 //    var p = context.Persons.FirstOrDefault(x => x.Id == id);
@@ -105,14 +123,15 @@ var id = new Guid("0eb69c8e-538e-4b4f-a878-08db5190935d");
 //    context.SaveChanges();
 //}
 
-using (var context = new SchoolContextNT())
-{
-    var info = context.Infos.FirstOrDefault(x => x.PersonId == id);
-    info.First = "FIRST 3";
-    info.Last = "LAST 3";
-    context.Infos.Update(info);
-    context.SaveChanges();
-}
+// Add one-to-one NO TRACKING
+//using (var context = new SchoolContextNT())
+//{
+//    var info = context.Infos.FirstOrDefault(x => x.PersonId == id);
+//    info.First = "FIRST 3";
+//    info.Last = "LAST 3";
+//    context.Infos.Update(info);
+//    context.SaveChanges();
+//}
 
 // See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
